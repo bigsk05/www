@@ -9,6 +9,8 @@
     <link rel="icon" href="https://cdn.gh.ink/image/avatar/Bigsk.jpg" type="image/jpeg">
     <link type="text/css" rel="stylesheet" href="https://www.ianxia.com/static/css/errors.css" />
     <link rel="stylesheet" href="https://cdn.gh.ink/assembly/aplayer/1.10.0/APlayer.min.css">
+    <script src="https://cdn.gh.ink/js/vue/2.6.14/vue.min.js"></script>
+    <script src="https://cdn.gh.ink/js/axios/1.1.3/axios.min.js"></script>
 </head>
 
 <body>
@@ -22,105 +24,27 @@
 
     <script src="https://cdn.gh.ink/assembly/aplayer/1.10.0/APlayer.min.js"></script>
     <script>
-        const ap = new APlayer({
-        container: document.getElementById('aplayer'),
-        autoplay: false,
-        loop: 'all',
-        listFolded: true,
-        order: "random",
-        audio: [
-            {
-                name: 'Awakening',
-                artist: 'Defqwop',
-                url: 'https://cdn.gh.ink/site/public/404/musics/Defqwop%20-%20Awakening.mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-            {
-                name: 'Fall To Light',
-                artist: 'Laszlo',
-                url: 'https://cdn.gh.ink/site/public/404/musics/Laszlo%20-%20Fall%20To%20Light.mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-            {
-                name: 'Here We Are',
-                artist: 'Laszlo',
-                url: 'https://cdn.gh.ink/site/public/404/musics/Laszlo%20-%20Here%20We%20Are.mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-            {
-                name: 'Imaginary Friends',
-                artist: 'Laszlo',
-                url: 'https://cdn.gh.ink/site/public/404/musics/Laszlo%20-%20Imaginary%20Friends.mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-            {
-                name: 'Flares',
-                artist: 'NIVIRO',
-                url: 'https://cdn.gh.ink/site/public/404/musics/NIVIRO%20-%20Flares.mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-            {
-                name: 'The Ghost',
-                artist: 'NIVIRO',
-                url: 'https://cdn.gh.ink/site/public/404/musics/NIVIRO%20-%20The%20Ghost.mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-            {
-                name: 'Candyland',
-                artist: 'Tobu',
-                url: 'https://cdn.gh.ink/site/public/404/musics/Tobu%20-%20Candyland.mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-            {
-                name: 'Hope (Original Mix)',
-                artist: 'Tobu',
-                url: 'https://cdn.gh.ink/site/public/404/musics/Tobu%20-%20Hope%20(Original%20Mix).mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-            {
-                name: 'Life',
-                artist: 'Tobu',
-                url: 'https://cdn.gh.ink/site/public/404/musics/Tobu%20-%20Life.mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-            {
-                name: 'Mesmerize',
-                artist: 'Tobu',
-                url: 'https://cdn.gh.ink/site/public/404/musics/Tobu%20-%20Mesmerize.mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-            {
-                name: 'Seven',
-                artist: 'Tobu',
-                url: 'https://cdn.gh.ink/site/public/404/musics/Tobu%20-%20Seven.mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-            {
-                name: 'Cloud 9',
-                artist: 'Tobu,Itro',
-                url: 'https://cdn.gh.ink/site/public/404/musics/Tobu,Itro%20-%20Cloud%209.mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-            {
-                name: 'Sunburst',
-                artist: 'Tobu,Itro',
-                url: 'https://cdn.gh.ink/site/public/404/musics/Tobu,Itro%20-%20Sunburst.mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-            {
-                name: 'Force',
-                artist: 'Alan Walker',
-                url: 'https://cdn.gh.ink/site/public/404/musics/Alan%20Walker%20-%20Force.mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-            {
-                name: 'Spectre',
-                artist: 'Alan Walker',
-                url: 'https://cdn.gh.ink/site/public/404/musics/Alan%20Walker%20-%20Spectre.mp3',
-                cover: 'https://cdn.gh.ink/site/public/404/musics/NCS%20Cover.png',
-            },
-        ]
-        });
+        new Vue({
+          el: '#app',
+          mounted () {
+            axios
+              .get('https://api.gh.ink/404music')
+              .then(function (response) {
+                const ap = new APlayer({
+                  container: document.getElementById('aplayer'),
+                  autoplay: false,
+                  loop: 'all',
+                  listFolded: true,
+                  theme: '#5A5C6C',
+                  order: "random",
+                  audio: response.data.content
+                });
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          }
+        })
     </script>
 </body>
 
