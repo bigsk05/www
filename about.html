@@ -9,11 +9,15 @@
 		<meta name="keywords" content="bigsk,ianxia,xiaxinzhe,blog,photography,developer,opensource,fullstack">
 		<title>Ian Xia - About</title>
 		<script>
-			if (navigator.language == "zh-CN") {
-				window.location.href = "./zh_CN/about.html";
-			} else {
-				window.location.href = "./en_US/about.html";
-			}
+            var userLang = navigator.language || navigator.userLanguage;
+
+            if (userLang.indexOf("zh") === 0) {
+                window.location.href = "zh/about.html";
+            } else if (userLang.indexOf("eo") === 0) {
+                window.location.href = "eo/about.html";
+            } else {
+                window.location.href = "en/about.html";
+            }
 		</script>
 	</head>
 	<body>

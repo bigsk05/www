@@ -7,13 +7,17 @@
 		<meta name="author" content="Bigsk">
 		<meta name="description" content="Bigsk's personal website">
 		<meta name="keywords" content="bigsk,ianxia,xiaxinzhe,blog,photography,developer,opensource,fullstack">
-		<title>Ian Xia - Index</title>
+		<title>Ian Xia - Home</title>
 		<script>
-			if (navigator.language == "zh-CN") {
-				window.location.href = "./zh_CN/index.html";
-			} else {
-				window.location.href = "./en_US/index.html";
-			}
+            var userLang = navigator.language || navigator.userLanguage;
+
+            if (userLang.indexOf("zh") === 0) {
+                window.location.href = "zh/index.html";
+            } else if (userLang.indexOf("eo") === 0) {
+                window.location.href = "eo/index.html";
+            } else {
+                window.location.href = "en/index.html";
+            }
 		</script>
 	</head>
 	<body>
