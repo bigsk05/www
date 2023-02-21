@@ -67,7 +67,6 @@
       <div class="row">
         <div class="col-md-4">
           <img class="img-obj" src="https://cdn.gh.ink/image/avatar/Bigsk.png" alt="Bigsk" style="border-radius: 10px" width="90%" onclick="show_modal(this)">
-          <br>
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-7">
@@ -75,6 +74,12 @@
           <div class="h6 font-weight-normal">From Wenzhou, China; Live in Jiaxing, China</div>
           <div class="h6 font-weight-normal"><b>Student</b>, Full Stack Developer</div>
           <div class="h6 font-weight-normal">Originator of <b>Ghink Universe Technology</b></div>
+          <br>
+          <li>🎒 Student</li>
+          <li>🐺 Furry</li>
+          <li>👨‍💻 Full Stack Developer</li>
+          <li>📻 Amateur Radio Ham (Enthusiast)</li>
+          <li>👨‍💼 Originator of Ghink Universe Technology</li>
           <br>
           <li>📝 Prefer GoLang / Python for the backend, Vue.JS for the frontend</li>
           <li>👨 Pronouns: He/His</li>
@@ -163,7 +168,7 @@
     <script>
       $.ajax({
         type: "GET",
-        url: "https://open.geh.ink/grey_filter",
+        url: "https://api.gh.ink/grey_filter",
         dataType: "json",
         success: function(data, textStatus){
           for (let i=0;i<data["content"]["accurate_slot"].length;i++) {
